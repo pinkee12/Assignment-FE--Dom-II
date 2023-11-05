@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    #cont{
+        /* border:1px solid red; */
+        width:600px;
+        height:600px;
+        margin:auto;
+    }
+    .MinBox{
+        display: flex;
+        justify-content: space-between;
+    }
+    .MinBox >div{
+        /* border:1px solid red; */
+        height: 150px;
+        width:150px
+    }
+    .button1{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:red;
+    }
+    .button2{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:green;
+        border: 3px solid black;
+    }
+    .score{
+        border:1px solid red;
+        width:300px;
+        height:100px;
+        margin:auto;
+        background-color: #808080;
+        border: 3px solid black;
+    }
+    .classFlex{
+        display: grid;
+        /* border: 1px solid red; */
+        grid-template-columns: repeat(3,80px);
+        grid-template-rows: repeat(6,80px);
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+
+    }
+    .classFlex >div{
+        /* border:1px solid red; */
+
+    }
+    .last{
+        grid-column-start: 2;
+        grid-column-end: 3;        
+        
+    }
+    .last1{
+        grid-row-start: 5;
+        grid-row-end: 6;    
+        grid-column-start: 1;
+        grid-column-end: 4;          
+    }
+    .button3{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:rgb(58, 103, 58);
+        border: 3px solid black;
+    }
+    .button4{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:rgb(228, 8, 8);
+        border: 3px solid black;
+    }
+    .button0{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:#600f60;
+        border: 3px solid black;
+    }
+    .buttonEnter{
+        width: 100%;
+        height: 100%;
+        font-size: 30px;
+        background-color:black;
+        border: 3px solid black;
+        color:white;
+    }
+    p{
+        font-size: 40px;
+        text-align: center;
+    }
+   </style>
+</head>
+<body>
+    <div id="cont">
+
+        <div class="MinBox"> 
+            <div id="min"><button class="button1" >43</button></div>
+            <div id="max"><button class="button2" >2019</button></div>
+        </div>
+       <span style="margin-left: 40px;font-size: 30px;">MIN</span><span style="margin-left: 400px;font-size: 30px;">MAX</span>
+       <p style="text-align: center;font-size: 30px;">SCORE</p>
+       <div class="score"><p id="int">#</p></div>
+       <div class="classFlex">
+        <div class="get"><button class="button3" id="btn">1</button></div>
+        <div class="get"><button class="button4" >2</button></div>
+        <div class="get"><button class="button3" >3</button></div>
+        <div class="get"><button class="button4" >4</button></div>
+        <div class="get"><button class="button4" >5</button></div>
+        <div class="get"><button class="button4" >6</button></div>
+        <div class="get"><button class="button3" >7</button></div>
+        <div class="get"><button class="button4" >8</button></div>
+        <div class="get"><button class="button3" >9</button></div>
+        <div class="last" ><button class="button0">0</button></div>
+        <div class="last1"><button class="buttonEnter" onclick="enter()">ENTER</button></div>
+       </div>
+    </div>
+    
+</body>
+<script>
+       var str=""
+       var score=document.getElementById('int')
+       var btn=document.getElementsByClassName('get')
+          for(var i=0;i<btn.length;i++){
+            btn[i].addEventListener('click',function(event){
+                str+=event.target.innerText
+                score.innerText=str
+
+            })
+                
+            }
+            var zero=document.getElementsByClassName("last")
+            console.log(zero)
+            zero[0].addEventListener('click',function(event){
+               
+                str+=event.target.innerText
+                score.innerText=str
+                
+
+            })
+    function enter(){
+        var min=document.getElementsByClassName('button1')
+        var max=document.getElementsByClassName('button2')
+        var nmax=Number(max[0].innerText)
+        var nmin=Number(min[0].innerText)
+        var nstr=Number(str)
+       
+       
+        if(nstr>nmax){
+            
+            max[0].innerText=str
+        }
+        else if(nmin>nstr){
+            min[0].innerText=str
+        }
+
+    }
+    
+                                  
+
+</script>
+</html>
